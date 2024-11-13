@@ -2,24 +2,25 @@ package com.devsuperior.dslist.dto;
 
 import com.devsuperior.dslist.entities.Game;
 import lombok.*;
+import org.springframework.beans.BeanUtils;
 
-@Builder
 @Getter @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GameMinDTO {
+public class GameDTO {
 
     private Long id;
     private String title;
     private Integer year;
+    private String genre;
+    private String platforms;
+    private Double score;
     private String imgUrl;
     private String shortDescription;
+    private String longDescription;
 
-    public GameMinDTO(Game entity){
-        id = entity.getId();
-        title = entity.getTitle();
-        year = entity.getYear();
-        imgUrl = entity.getImgUrl();
-        shortDescription = entity.getShortDescription();
+    public GameDTO(Game entity){
+        BeanUtils.copyProperties(entity, this);
     }
 }
