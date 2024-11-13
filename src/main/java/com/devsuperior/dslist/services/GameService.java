@@ -16,5 +16,4 @@ public class GameService {
     public List<GameMinDTO> findAll() {
         return gameRepository.findAll().stream().map(GameMinDTO::new).toList();
     }
-
 }
